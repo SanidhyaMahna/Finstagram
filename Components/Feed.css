@@ -53,6 +53,31 @@
     border-radius: 15px;
 }
 
+.video-info{
+    position: absolute;
+    width: 20rem;
+    display: flex;
+    justify-content: space-around;
+    bottom: 55px;
+
+}
+
+.avatar-container{
+    display: flex;
+    justify-content: flex-start;
+    width: 70%;
+}
+
+.avatar-container>p{
+    margin-left: 0.2rem;
+}
+
+.post-like{
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+}
+
 
 
 
