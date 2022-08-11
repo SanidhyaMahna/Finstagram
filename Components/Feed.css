@@ -37,9 +37,10 @@
 }
 
 .videos-container::-webkit-scrollbar{
-    /* display: none; */
+    display: none;
 }
 .post-container{
+    overflow-y: hidden;
     height: 100%;
     width:20rem;
     margin-bottom: 0.6rem;
