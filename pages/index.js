@@ -1,8 +1,21 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Feed from '../Components/Feed'
+import { useContext } from 'react'
+import { AuthContext } from '../context/auth'
+import { useRouter } from 'next/router'
+import InterOb from "../components/InterOb";
+
 export default function Home() {
+  const {user} = useContext(AuthContext);
+  console.log(user?.uid);
+  const Redirect = () =>{
+    const router = useRouter();
+    router.push("/login");
+  }
   return (
+    
+
     <div className={styles.container}>
       <Head>
         <title>JIFFYGram</title>
@@ -18,9 +31,10 @@ export default function Home() {
         
       </main> */}
 
-
-      <Feed />
-
+      {user?.uid?
+        <Feed />:<Redirect />
+      }
+      
     </div>
   );
 }

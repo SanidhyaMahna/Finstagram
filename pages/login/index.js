@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React,{useContext, useEffect} from "react";
 import TextField from "@mui/material/TextField";
 import Image from "next/image";
 import logo from "../../assets/Instagram.jpeg";
@@ -9,46 +9,45 @@ import bg2 from '../../assets/bg2.jpg'
 import bg3 from '../../assets/bg3.jpg'
 import bg4 from '../../assets/bg4.jpg'
 import bg5 from '../../assets/bg5.jpg'
-import { AuthContext } from "../../context/auth";
+import { AuthContext } from '../../context/auth';
 import { useRouter } from "next/router";
-import { Link } from "@mui/material";
-
-function index() {
+import Link from 'next/link'
+function Index() {
   const [email, setEmail] = React.useState('');
-  const[password, setPassword] = React.useState('');
+  const [password, setPassword] = React.useState('');
   const [error, setError] = React.useState('');
   const [loading, setLoading] = React.useState(false);
   const router = useRouter();
-  const { login , user } = useContext(AuthContext);
-  useEffect(()=>{
-    if(user){
-      //router to feeds page
+  const { login, user } = useContext(AuthContext);
+  useEffect(() => {
+    if (user) {
+      //route to feeds page
       router.push("/");
-    }
 
-  }, [user])
+    }
+    
+  },[user])
   let handleClick = async() => {
     try {
       console.log(email);
       console.log(password);
       setLoading(true);
       setError('');
-      await login(email,password);
+      await login(email, password);
       console.log("logged in");
     }
-    catch(err){
-      console.log("error " , JSON.stringify(err));
+    catch (err) {
+      console.log("error ", JSON.stringify(err));
       setError(err.code);
-      //use set timeout to remove error after 2 secs
+      // use settimeout to remove error after 2sec
       setTimeout(() => {
         setError('');
       }, 2000);
     }
     setLoading(false);
+    
+
   }
-
-
-
   return (
     <div className="login-container">
       <div className="insta-mob-bg">
@@ -59,8 +58,6 @@ function index() {
             infiniteLoop
             showArrows={false}
             showThumbs={false}
-            customTransition="all .5"
-           
             showIndicators={false}
             stopOnHover
             showStatus={false}
@@ -97,16 +94,12 @@ function index() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-
-
           {/* if error is present then show error */}
-          { error!="" &&
-            <div style={{ color: "red" }}>{ error }</div>
-          }
+          {error != "" && <div style={{ color: "red" }}>{error}</div>}
           <Link href="/forgot">
-          <span style={{ color: "blue", marginTop: "0.5rem" }}>
-            Forget Password{" "}
-          </span>
+            <div style={{ color: "blue", marginTop: "0.5rem" }}>
+              Forget Password{" "}
+            </div>
           </Link>
 
           <Button
@@ -115,16 +108,15 @@ function index() {
             component="label"
             fullWidth
             onClick={handleClick}
+            disabled={loading}
           >
             Log in
           </Button>
-
         </div>
-
         <div className="bottom-card">
-          Don't Have an account ?{" "}
+          Do not Have an account ?{" "}
           <Link href="/signup">
-          <span style={{ color: "blueviolet", textDecoration:"none" }}>Signup</span>
+            <span style={{ color: "blueviolet" }}>Signup</span>
           </Link>
         </div>
       </div>
@@ -132,4 +124,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { auth} from "../firebase";
 export const AuthContext = React.createContext();
-import { onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth";
 function AuthWrapper({ children }) {
   const [user, setUser] = useState('');
   const [loading, setLoading] = useState(true);
@@ -13,6 +13,9 @@ function AuthWrapper({ children }) {
       console.log("onAuthStateChanged called" );
       if (user) {
         setUser(user);
+      }
+      else {
+        setUser('');
       }
     })
     setLoading(false);
@@ -28,16 +31,21 @@ function AuthWrapper({ children }) {
   function logout() {
     return signOut(auth);
   }
+
   function forgetPassword(email) {
     return sendPasswordResetEmail(auth, email);
   }
 
+  function signUp(email, password) {
+    return createUserWithEmailAndPassword(auth, email, password);
+  }
 
     const store = {
       login,
       user,
       logout,
       forgetPassword,
+      signUp
     };
 
 

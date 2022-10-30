@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useContext, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Image from "next/image";
@@ -13,7 +14,7 @@ import { AuthContext } from "../context/auth";
 import { useRouter } from "next/router";
 import Link from 'next/link'
 
-function forgot() {
+function Forgot() {
   const [email, setEmail] = React.useState("");
   const [error, setError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
@@ -93,7 +94,7 @@ function forgot() {
           </Button>
         </div>
         <div className="bottom-card">
-          Don't Have an account ?{" "}
+          Do not Have an account ?{" "}
           <Link href='/signup'>
             <span style={{ color: "blueviolet" }}>Signup</span>
           </Link>
@@ -103,4 +104,4 @@ function forgot() {
   );
 }
 
-export default forgot;
+export default Forgot;

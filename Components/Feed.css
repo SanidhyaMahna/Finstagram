@@ -9,7 +9,8 @@
     justify-content: center;
     align-items: center;
     background-color: white;
-   width: 100vw;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .nav-icons{
@@ -25,36 +26,42 @@
 
 .upload-btn{
     margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .videos-container{
-    height: 70vh;
+    height: 75vh;
     /* border: 1px solid black; */
     border-radius: 15px;
     scrollbar-width: 0;
     overflow-y: scroll;
+    scroll-snap-type: y mandatory;
 
 }
 
 .videos-container::-webkit-scrollbar{
     display: none;
 }
+
 .post-container{
-    overflow-y: hidden;
     height: 100%;
     width:20rem;
     margin-bottom: 0.6rem;
+    /* margin-top: 1rem; */
+    position: relative;
 }
 
 .post-container>video{
     height: 100%;
     width:20rem;
     object-fit: contain;
-    background-color: lightpink;
+    background-color: black;
     border-radius: 15px;
+    scroll-snap-align: start;
+    
 }
 
-.video-info{
+.videos-info{
     position: absolute;
     width: 20rem;
     display: flex;
@@ -74,11 +81,51 @@
 }
 
 .post-like{
-    width: 10%;
+    width: 20%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 3rem;
+
 }
 
+.modal-container{
+    display: flex;
+    height:100%;
+    width: 100%;
+}
+
+.video-modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width:50%;
+}
+
+.video-modal>video{
+    height: 100%;
+    width: 100%;
+}
+
+.comments-modal{
+    height: 100%;
+    width:50%;
+}
+
+.post-like2{
+    /* width: 20%; */
+    display: flex;
+    
+    /* justify-content: center; */
+    align-items: center;
+    /* height: 3rem; */
+
+}
+
+.card1{
+    height: 70vh;
+}
 
 
 
