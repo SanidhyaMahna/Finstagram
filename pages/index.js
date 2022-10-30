@@ -4,7 +4,7 @@ import Feed from '../Components/Feed'
 import { useContext } from 'react'
 import { AuthContext } from '../context/auth'
 import { useRouter } from 'next/router'
-import InterOb from "../components/InterOb";
+
 
 export default function Home() {
   const {user} = useContext(AuthContext);
