@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useRef} from "react";
 import Avatar from "@mui/material/Avatar";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
@@ -31,6 +31,7 @@ function Post({ postData, userData }) {
     console.log("dialog opened");
     setOpen(true);
   };
+  const myRef = useRef();
 
   const handleClose = () => {
     console.log("dialog closed");
@@ -72,7 +73,10 @@ function Post({ postData, userData }) {
   }
 
   const handleNextVideo = (e)=>{
-    let nextVideo = ReactDOM.findDOMNode(e.target).parentNode.nextSibling;
+    let nextVideo;
+    if(myRef.current){
+      nextVideo = e.target.parentNode.nextSibling;
+    }
     if(nextVideo){
       nextVideo.scrollIntoView({behavior : "smooth"});
     }
@@ -80,7 +84,9 @@ function Post({ postData, userData }) {
 
   return (
     <div className="post-container">
+    
       <video 
+      ref = {myRef}
       src={postData.postURL} 
       muted = {isMuted}
       onClick = {handleMute}
